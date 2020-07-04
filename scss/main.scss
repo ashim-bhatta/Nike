@@ -4,3 +4,124 @@
 @import './button';
 
 
+.about{
+    padding: $padding;
+    display: flex;
+    flex-direction: column;
+
+    .img{
+        @extend %flex;
+        width: 100%;
+
+        img{
+            width: 60%;
+        }
+    }
+
+    &-content{
+        padding: 30px;
+        text-align: center;
+
+        h1{
+            font-size: $bigger-font;
+            font-weight: 900;
+        }
+        p{
+            font-size: $smaller-font;
+            margin: 15px 0;
+        }
+    }
+}
+
+// popular
+
+.popular{
+    margin-top: 30px;
+    width: 100%;
+    padding: $padding;
+
+    h2{
+        font-size: $bigger-font;
+        font-weight: 900;
+        text-align: center;
+
+    }
+
+    &-content{
+        padding: $padding;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        margin-top: 30px;
+
+        .content{
+            @extend %flex;
+            padding: $padding;
+            text-align: center;
+            flex-direction: column;
+            width: 100%;
+            max-width: 300px;
+            overflow: hidden;
+            box-shadow: 1px 1px 20px rgba(182, 176, 176, 0.3);
+            border-radius: 20px;
+            position: relative;
+
+            img{
+                width: 60%;
+            }
+            h3{
+                color: $secondary-color;
+                font-size: $medium-font;
+                margin: 10px 0;
+            }
+            p{
+                color: $secondary-color;
+                font-size: $smaller-font;
+            }
+
+            &:hover{
+                box-shadow: 1px 1px 20px rgba(114, 110, 110, 0.3);
+                border-radius: 20px;
+            }
+
+            &::after{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                display: inline-block;
+                background: rgba(36, 235, 178, 0.63);
+                transform: scaleX(0);
+                transition: 300ms;
+                transform-origin: left;
+            }
+            &::before{
+                @extend %flex;
+                content: 'View Details';
+                font-size: 10px;
+                color: white;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scaleX(0);
+                width: 80px;
+                height: 30px;
+                border: 1px solid white;
+                z-index: 100;
+                cursor: pointer;
+
+            }
+            &:hover::after{
+                transform: scaleX(1);
+                transform-origin: right;
+                z-index: 50;                
+            }
+            &:hover::before{
+                transform: translate(-50%, -50%) scaleX(1);
+                transition-delay: 300ms;
+            }
+        }
+    }
+}
