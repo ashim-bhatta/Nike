@@ -8,6 +8,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
+    z-index: 100;
 }
 
 
@@ -21,6 +22,7 @@
     @extend %btn;
     position: relative;
 
+
     &::after{
         content: '';
         position: absolute;
@@ -31,5 +33,36 @@
         display: inline-block;
         border: 2px solid $primary-color;
     }
+    &:hover{
+    animation: beSocial .5s;
 
+    }
+    &:hover::after{
+        animation-name: borderBtnAnimation;
+        animation-duration: 300ms;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        // background: $primary-color;
+        z-index: -1;
+        
+    }
+
+
+}
+
+
+// btn animation
+@keyframes borderBtnAnimation{
+    from{
+        top: 7px;
+        left: -7px;
+        bottom: -7px;
+        right: 7px;
+    }
+    to{
+        top: -7px;
+        left: 7px;
+        bottom: 7px;
+        right: -7px;
+    }
 }

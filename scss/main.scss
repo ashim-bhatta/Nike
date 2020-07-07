@@ -1,11 +1,12 @@
 @import './variable';
 @import './config';
+@import './animation';
 @import './header';
 @import './button';
 
 
 .about{
-    padding: $padding;
+    @include padding;
     display: flex;
     flex-direction: column;
 
@@ -29,16 +30,20 @@
         p{
             font-size: $smaller-font;
             margin: 15px 0;
+            color: darken($color: $secondary-color, $amount: 20%);
         }
     }
 }
 
+
+
+
 // popular
 
 .popular{
+    @include padding;
     margin-top: 30px;
     width: 100%;
-    padding: $padding;
 
     h2{
         font-size: $bigger-font;
@@ -48,22 +53,21 @@
     }
 
     &-content{
-        padding: $padding;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
+        grid-gap: 10px;
         margin-top: 30px;
 
         .content{
             @extend %flex;
-            padding: $padding;
+            // padding: $padding;
             text-align: center;
             flex-direction: column;
             width: 100%;
             max-width: 300px;
             overflow: hidden;
             box-shadow: 1px 1px 20px rgba(182, 176, 176, 0.3);
-            border-radius: 20px;
+            border-radius: 5px;
             position: relative;
 
             img{
@@ -125,3 +129,185 @@
         }
     }
 }
+
+// collection
+
+.collection{
+    @include padding;
+    @extend %flex;
+    margin-top: 30px;
+    flex-direction: column;
+    text-align: center;
+
+   .content{
+        width: 100%;
+
+        h2{
+            font-size: $bigger-font;
+            font-weight: 900;
+        }
+        p{
+            font-size: $smaller-font;
+            color: darken($color: $secondary-color, $amount: 20%);
+            margin: 15px 0;
+        }
+        button{
+            margin: 10px;
+        }
+   }
+
+   .img{
+       @extend %flex;
+       width: 100%;
+       margin: 30px 0 0 0%;
+       margin-bottom: 20px;
+
+              
+
+       & > div{
+        //    @extend %border;
+            width: 60%;
+            background: lighten($color: $secondary-color, $amount: 34%);
+            position: relative;
+
+
+            &::after{
+                content: '';
+                position: absolute;
+                top: 30px;
+                left: -30px;
+                right: 30px;
+                bottom: -30px;
+                z-index: -1;
+                border: 2px solid $primary-color;
+            }
+
+           img{
+               width: 100%;
+            
+           }
+       }
+   }
+
+
+
+}
+
+
+// team
+
+.team{
+    // width: 100%;
+    @include padding;
+    @extend %flex;
+    flex-direction: column;
+    margin: 40px 0 0 0;
+    text-align: center;
+
+    h2{
+        font-size: $bigger-font;
+        font-weight: 900;
+    }
+    p{
+        font-size: $smaller-font;
+        color: darken($color: $secondary-color, $amount: 20%);
+        margin: 15px;
+    }
+    h3{
+        font-size: $medium-font;
+        color: darken($color: $secondary-color, $amount: 30%);
+    }
+    h4{
+        font-size: $smaller-font;
+        margin: 5px 0 0 0;
+        color: darken($color: $primary-color, $amount: 30%);
+
+    }
+}
+
+
+// blog
+.blog{
+    @include padding;
+    @extend %flex;
+    flex-direction: column;
+    margin: 40px 0 0 0;
+    text-align: center;
+
+    h2{
+        font-size: $bigger-font;
+        font-weight: 900;
+    }
+
+    &-content{
+        margin-top: 40px;
+
+        .img{
+            @extend %flex;
+            width: 100%;
+
+            & > div{
+                 @extend %border;
+                width: 60%;
+
+                img{
+                    width: 100%;
+                }
+            }
+
+        }
+
+        .content{
+            margin-top: 60px;
+
+            h3{
+                font-size: $medium-font;
+            }
+            p{
+                font-size: $smaller-font;
+                color: darken($color: $secondary-color, $amount: 30%);
+                margin: 15px 0;
+            }
+        }
+    }
+}
+
+// footer
+
+footer{
+    @extend %flex;
+    @include padding;
+    margin: 40px 0 0 0;
+    justify-content: space-evenly;
+    height: 80px;
+    background: lighten($color: $secondary-color, $amount: 35%);
+
+    .logo{
+        width: 50%;
+    }
+    .newsletter{
+        width: 50%;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        p{
+            color: darken($color: $secondary-color, $amount: 30%);
+            font-size: $smaller-font;
+        }
+        form{
+            margin-top: 10px;
+            input[type='text']{
+                width: 180px;
+                height: 30px;
+                padding-left: 5px;
+                border: 1px solid $primary-color;
+                border-radius: 5px;
+            }
+
+
+        }
+    }
+}
+
+@import './responsive'
